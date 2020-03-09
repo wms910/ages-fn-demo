@@ -24,6 +24,7 @@ public class LookedAtInteractiveDisplayText : MonoBehaviour
             displayText.text = lookedAtInteractive.DisplayText;
         else
             displayText.text = string.Empty;
+                Debug.Log("empty");
     }
 
     /// <summary>

@@ -17,6 +17,7 @@ public class InteractWithLookedAt : MonoBehaviour
             lookedAtInteractive.InteractWith();
         }
     }
+
     /// <summary>
     /// Event handler for DetectLookedAtInteractive.LookAtInteractiveChanged
     /// </summary>
