@@ -15,7 +15,7 @@ public class DetectLookedAtInteractive : MonoBehaviour
 
     [Tooltip("How far from the racastOrigin we will search for interactive elements.")]
     [SerializeField]
-    private float maxRange = 2.5f;
+    private float maxRange = 5.0f;
 
     /// <summary>
     /// Event rasied when the player looks at a different IInteractive.
