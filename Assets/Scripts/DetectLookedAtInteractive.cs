@@ -20,7 +20,7 @@ public class DetectLookedAtInteractive : MonoBehaviour
     /// <summary>
     /// Event rasied when the player looks at a different IInteractive.
     /// </summary>
-    public static event Action <IInteractive> LookedAtInteractiveChanged;
+    public static event Action<IInteractive> LookedAtInteractiveChanged;
 
     public IInteractive LookedAtInteractive
     {
@@ -33,20 +33,23 @@ public class DetectLookedAtInteractive : MonoBehaviour
                 lookedAtInteractive = value;
                 LookedAtInteractiveChanged?.Invoke(lookedAtInteractive);
             }
+           
         }
     }
 
     private IInteractive lookedAtInteractive;
+
+    //private Vector3 raycastDirection;
 
     private void FixedUpdate()
     {
         LookedAtInteractive = GetLookedAtInteractive();
     }
 
-/// <summary>
-/// Raycast forward from the camera to look for IInteractives.
-/// </summary>
-/// <returns>The first IInteractive detected, or null if none are found.</returns>
+    /// <summary>
+    /// Raycasts forward from the camera to look for IInteractives.
+    /// </summary>
+    /// <returns>The first IInteractive detected, or null if none are found.</returns>
     private IInteractive GetLookedAtInteractive()
     {
         Debug.DrawRay(raycastOrigin.position, raycastOrigin.forward * maxRange, Color.red);
@@ -56,15 +59,11 @@ public class DetectLookedAtInteractive : MonoBehaviour
         IInteractive interactive = null;
 
         LookedAtInteractive = interactive;
-
         if (objectWasDetected)
         {
-            Debug.Log("Player is looking at: " + hitInfo.collider.gameObject.name);
+            //Debug.Log("Player is looking at: " + hitInfo.collider.gameObject.name);
             interactive = hitInfo.collider.gameObject.GetComponent<IInteractive>();
         }
-
-        if (interactive != null)
-            lookedAtInteractive = interactive;
 
         return interactive;
     }

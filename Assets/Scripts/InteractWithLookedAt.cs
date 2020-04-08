@@ -9,6 +9,8 @@ using UnityEngine;
 public class InteractWithLookedAt : MonoBehaviour
 {
     private IInteractive lookedAtInteractive;
+
+    //Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Interact") && lookedAtInteractive != null)
@@ -19,15 +21,15 @@ public class InteractWithLookedAt : MonoBehaviour
     }
 
     /// <summary>
-    /// Event handler for DetectLookedAtInteractive.LookAtInteractiveChanged
+    /// Event handler for DetectLookedAtInteractive.LookedAtInteractiveChanged
     /// </summary>
-    /// <param name="newLookAtInteractive">Reference to the new IInteractive the player is lookin
-    private void OnLookedAtInteractiveChanged(IInteractive newLookedAtInteractive)
+    /// <param name="newLookedAtInteractive"Reference to the new IInteractive the player is looking at.</param>
+    private void OnLookedAtInteractiveChanged(IInteractive newLookAtInteractive)
     {
-        lookedAtInteractive = newLookedAtInteractive;
+        lookedAtInteractive = newLookAtInteractive;
     }
 
-    #region Event subscription / unsubscription
+    #region Event subscription / unsubscription 
     private void OnEnable()
     {
         DetectLookedAtInteractive.LookedAtInteractiveChanged += OnLookedAtInteractiveChanged;
@@ -37,4 +39,5 @@ public class InteractWithLookedAt : MonoBehaviour
         DetectLookedAtInteractive.LookedAtInteractiveChanged -= OnLookedAtInteractiveChanged;
     }
     #endregion
+
 }

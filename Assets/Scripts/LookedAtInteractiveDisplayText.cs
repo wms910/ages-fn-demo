@@ -24,23 +24,22 @@ public class LookedAtInteractiveDisplayText : MonoBehaviour
             displayText.text = lookedAtInteractive.DisplayText;
         else
             displayText.text = string.Empty;
-                Debug.Log("empty");
     }
 
     /// <summary>
-    /// Event handler for DetectLookedAtInteractive.LookAtInteractiveChanged
+    /// Event handler for DetectLookedAtInteractive.LookedAtInteractiveChanged
     /// </summary>
-    /// <param name="newLookAtInteractive">Reference to the new IInteractive the player is looking at.</param>
+    /// <param name="newLookedAtInteractive"Reference to the new IInteractive the player is looking at.</param>
     private void OnLookedAtInteractiveChanged(IInteractive newLookAtInteractive)
     {
         lookedAtInteractive = newLookAtInteractive;
         UpdateDisplayText();
     }
 
-    #region Event subscription / unsubscription
+    #region Event subscription / unsubscription 
     private void OnEnable()
     {
-        DetectLookedAtInteractive.LookedAtInteractiveChanged += OnLookedAtInteractiveChanged;
+        DetectLookedAtInteractive.LookedAtInteractiveChanged += OnLookedAtInteractiveChanged;   
     }
     private void OnDisable()
     {
