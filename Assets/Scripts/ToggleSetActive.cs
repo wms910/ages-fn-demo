@@ -6,7 +6,13 @@ public class ToggleSetActive : InteractiveObject
 {
     [Tooltip("The GameObject to toggle.")]
     [SerializeField]
-    private GameObject objectToToggle;
+    private GameObject objectToToggleA;
+
+    [SerializeField]
+    private GameObject objectToToggleB;
+
+    [SerializeField]
+    private GameObject objectToToggleC;
 
     [Tooltip("Can the player interact with this more than once?")]
     [SerializeField]
@@ -22,10 +28,14 @@ public class ToggleSetActive : InteractiveObject
         if (isReusable || !hasBeenUsed)
         {
             base.InteractWith();
-            objectToToggle.SetActive(!objectToToggle.activeSelf);
+            objectToToggleA.SetActive(!objectToToggleA.activeSelf);
+            objectToToggleB.SetActive(!objectToToggleB.activeSelf);
+            objectToToggleC.SetActive(!objectToToggleC.activeSelf);
             hasBeenUsed = true;
             if (!isReusable) displayText = string.Empty;
         }
         
     }
+
+    
 }
