@@ -18,18 +18,17 @@ public class Check : MonoBehaviour
 
     [SerializeField]
     private GameObject finalobject;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    [SerializeField]
+    private GameObject teleport;
 
     // Update is called once per frame
     void Update()
     {
-       if (objectToToggleA.activeSelf == true&& objectToToggleB.activeSelf == true && objectToToggleC.activeSelf == true&& objectToToggleD.activeSelf == true)
+       if (objectToToggleA.activeSelf == true && objectToToggleB.activeSelf == true && objectToToggleC.activeSelf == true && objectToToggleD.activeSelf == true)
         {
             finalobject.SetActive(true);
+            teleport.SetActive(true);
         }
     }
 }
