@@ -19,7 +19,7 @@ public class InventoryObject : InteractiveObject
 
 
     public Sprite Icon => icon;
-    public string OjbectName => objectName;
+    public string ObjectName => objectName;
     public string Description => description;
 
     private new Renderer renderer;

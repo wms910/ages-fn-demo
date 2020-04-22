@@ -13,6 +13,14 @@ public class InventoryMenu : MonoBehaviour
     [SerializeField]
     private Transform inventoryListContentArea;
 
+    [Tooltip("Place in the UI for displaying the name fo the name of the selected inventory item.")]
+    [SerializeField]
+    private Text itemLabelText;
+
+    [Tooltip("Place in the UI for displaying info about the selected innventory item.")]
+    [SerializeField]
+    private Text descriptionAreaText;
+
     private static InventoryMenu instance;
     private CanvasGroup canvasGroup;
     private PlayerCamera playercamera;
@@ -70,7 +78,31 @@ public class InventoryMenu : MonoBehaviour
         audioSource.Play();
     }
 
+    /// <summary>
+    /// This is the event handler for InventoryMenuItemSelected.
+    /// </summary>
+    private void OnInventoryMenuItemSelected(InventoryObject inventoryObjectThatWasSelected)
+    {
+        itemLabelText.text = inventoryObjectThatWasSelected.ObjectName;
+        descriptionAreaText.text = inventoryObjectThatWasSelected.Description;
+    }
+
+    private void OnEnalbe()
+    {
+        InventoryMenuItemToggle.InventoryMenuItemSelected += OnInventoryMenuItemSelected;
+    }
+
+    private void OnDisable()
+    {
+        InventoryMenuItemToggle.InventoryMenuItemSelected -= OnInventoryMenuItemSelected;
+    }
+
     private void Update()
+    {
+        HandleInput();
+    }
+
+    private void HandleInput()
     {
         if (Input.GetButtonDown("Show Inventory Menu"))
             if (IsVisible)
