@@ -287,6 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayText: Take InventoryObject
   objectName: InventoryObject
+  description: 
+  icon: {fileID: 0}
 --- !u!82 &8725700225561294477
 AudioSource:
   m_ObjectHideFlags: 0

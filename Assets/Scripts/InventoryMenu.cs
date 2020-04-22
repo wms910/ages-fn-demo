@@ -87,7 +87,7 @@ public class InventoryMenu : MonoBehaviour
         descriptionAreaText.text = inventoryObjectThatWasSelected.Description;
     }
 
-    private void OnEnalbe()
+    private void OnEnable()
     {
         InventoryMenuItemToggle.InventoryMenuItemSelected += OnInventoryMenuItemSelected;
     }
