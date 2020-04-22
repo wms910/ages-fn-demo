@@ -34,7 +34,7 @@ public class Door : InteractiveObject
             string toReturn;
 
             if (isLocked)
-                toReturn = HasKey ? $"Use {key.ObjectName}" : lockedDisplayText;
+                toReturn = HasKey ? $"Use {key.OjbectName}" : lockedDisplayText;
             else
                 toReturn = base.DisplayText;
 

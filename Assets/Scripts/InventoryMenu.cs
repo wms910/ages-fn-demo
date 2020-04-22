@@ -2,13 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject inventoryMenuItemTogglePrefab;
+
+    [Tooltip("Content of the scrolview for the list of intentory items.")]
+    [SerializeField]
+    private Transform inventoryListContentArea;
+
     private static InventoryMenu instance;
     private CanvasGroup canvasGroup;
     private PlayerCamera playercamera;
     private PlayerMovement playermovement;
+    private AudioSource audioSource;
+
     public static InventoryMenu Instance
     {
         get
@@ -22,6 +32,22 @@ public class InventoryMenu : MonoBehaviour
 
     private bool IsVisible => canvasGroup.alpha > 0;
 
+    public void ExitMenuButtonClicked()
+    {
+        HideMenu();
+    }
+
+    /// <summary>
+    /// Instantiates a new InventoryMenuItemToggle prefab and adds it to the menu.
+    /// </summary>
+    /// <param name="inventoryObjectToAdd"></param>
+    public void AddItemToMenu(InventoryObject inventoryObjectToAdd)
+    {
+        GameObject clone = Instantiate(inventoryMenuItemTogglePrefab, inventoryListContentArea);
+        InventoryMenuItemToggle toggle = clone.GetComponent<InventoryMenuItemToggle>();
+        toggle.AssociatedInventoryObject = inventoryObjectToAdd;
+    }
+
     private void ShowMenu()
     {
         canvasGroup.alpha = 1;
@@ -30,6 +56,7 @@ public class InventoryMenu : MonoBehaviour
         playermovement.enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        audioSource.Play();
     }
 
     private void HideMenu()
@@ -40,6 +67,7 @@ public class InventoryMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         playercamera.enabled = true;
         playermovement.enabled = true;
+        audioSource.Play();
     }
 
     private void Update()
@@ -61,9 +89,23 @@ public class InventoryMenu : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         playercamera = FindObjectOfType<PlayerCamera>();
         playermovement = FindObjectOfType<PlayerMovement>();
+        audioSource = GetComponent<AudioSource>();
     }
+
     private void Start()
     {
         HideMenu();
+        StartCoroutine(WaitForAudioClip());
+        Debug.Log("We're not done waiting.");
+    }
+
+    private IEnumerator WaitForAudioClip()
+    {
+        float originalVolume = audioSource.volume;
+        audioSource.volume = 0;
+        Debug.Log("Start Waiting.");
+        yield return new WaitForSeconds(audioSource.clip.length);
+        Debug.Log("Done Waiting");
+        audioSource.volume = originalVolume;
     }
 }
