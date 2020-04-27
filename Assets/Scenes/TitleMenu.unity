@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09e51c2af7630e40ab34dbbfede2fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: InventoryMenu
+  gameSceneName: Terrain
 --- !u!1 &440293216
 GameObject:
   m_ObjectHideFlags: 0
