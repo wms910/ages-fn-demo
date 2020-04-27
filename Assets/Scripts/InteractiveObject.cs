@@ -6,13 +6,14 @@ using UnityEngine;
 //[RequireComponent(typeof(AudioSource))]
 public class InteractiveObject : MonoBehaviour, IInteractive
 {
+    [Tooltip("Text that will display in the UI when the player looks at this object in the world.")]
     [SerializeField]
     protected string displayText = nameof(InteractiveObject);
 
-    public string DisplayText => displayText;
-    private AudioSource audioSource;
+    public virtual string DisplayText => displayText;
+    protected AudioSource audioSource;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
@@ -25,7 +26,7 @@ public class InteractiveObject : MonoBehaviour, IInteractive
         catch (System.Exception)
         {
 
-            throw new System.Exception("Missing AudioSource componet: InteractiveObject requires an AudioSource component.");
+            throw new System.Exception("Missing AudioSource componet or audio clip: InteractiveObject requires an AudioSource component with an audio clip assigned.");
         }
         Debug.Log($"Player just interacted with {gameObject.name}."); 
     }
