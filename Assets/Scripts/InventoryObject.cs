@@ -25,6 +25,7 @@ public class InventoryObject : InteractiveObject
     private new Renderer renderer;
     private new Collider collider;
 
+
     private void Start()
     {
         renderer = GetComponent<Renderer>();

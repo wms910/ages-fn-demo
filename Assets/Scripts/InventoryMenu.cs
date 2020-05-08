@@ -21,6 +21,9 @@ public class InventoryMenu : MonoBehaviour
     [SerializeField]
     private Text descriptionAreaText;
 
+    [SerializeField]
+    private InteractWithLookedAt IWLA;
+
     private static InventoryMenu instance;
     private CanvasGroup canvasGroup;
     private PlayerCamera playercamera;
@@ -58,6 +61,7 @@ public class InventoryMenu : MonoBehaviour
 
     private void ShowMenu()
     {
+        IWLA.enabled = false;
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         playercamera.enabled = false;
@@ -69,6 +73,7 @@ public class InventoryMenu : MonoBehaviour
 
     private void HideMenu()
     {
+        IWLA.enabled = true;
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         Cursor.visible = false;
@@ -122,6 +127,7 @@ public class InventoryMenu : MonoBehaviour
         playercamera = FindObjectOfType<PlayerCamera>();
         playermovement = FindObjectOfType<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
+        IWLA = FindObjectOfType<InteractWithLookedAt>();
     }
 
     private void Start()

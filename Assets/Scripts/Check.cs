@@ -22,6 +22,9 @@ public class Check : MonoBehaviour
     [SerializeField]
     private GameObject teleport;
 
+    [SerializeField]
+    private GameObject redmushroom;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,6 +32,13 @@ public class Check : MonoBehaviour
         {
             finalobject.SetActive(true);
             teleport.SetActive(true);
+            redmushroom.SetActive(true);
+        }
+        else
+        {
+            finalobject.SetActive(false);
+            teleport.SetActive(false);
+            redmushroom.SetActive(false);
         }
     }
 }
