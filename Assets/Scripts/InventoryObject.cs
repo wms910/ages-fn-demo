@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryObject : InteractiveObject
 {
@@ -16,7 +17,6 @@ public class InventoryObject : InteractiveObject
     [Tooltip("Icon to display for this item in the iventory menu.")]
     [SerializeField]
     private Sprite icon;
-
 
     public Sprite Icon => icon;
     public string ObjectName => objectName;

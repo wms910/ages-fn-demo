@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 //[RequireComponent(typeof(AudioSource))]
@@ -28,7 +29,13 @@ public class InteractiveObject : MonoBehaviour, IInteractive
 
             throw new System.Exception("Missing AudioSource componet or audio clip: InteractiveObject requires an AudioSource component with an audio clip assigned.");
         }
-        Debug.Log($"Player just interacted with {gameObject.name}."); 
-    }
-    
+        if (gameObject.name == "BlueMushroom")
+        {
+            SceneManager.LoadScene("Lose");
+        }
+        else
+        {
+            Debug.Log($"Player just interacted with {gameObject.name}.");
+        }
+    }    
 }
