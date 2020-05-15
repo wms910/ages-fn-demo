@@ -35,7 +35,7 @@ public class InteractiveObject : MonoBehaviour, IInteractive
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-        else if (gameObject.name == "RedMushroom")
+        if (gameObject.name == "RedMushroom")
         {
             SceneManager.LoadScene("Win");
             Cursor.visible = true;
